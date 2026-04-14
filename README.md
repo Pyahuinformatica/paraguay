@@ -1,2 +1,0 @@
-# paraguay
-Equipos_Paraguay
