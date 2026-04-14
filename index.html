@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="es-PY">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Pyahu Solución Informática - Pedido Rápido WhatsApp</title>
+    
+    <meta name="theme-color" content="#d35400">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Pyahu Informática">
+    <link rel="apple-touch-icon" href="printer-page-imagem/logo-imagen-01.png">
+    
+    <link rel="manifest" href="manifest.json">
+    
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: url('printer-page-imagem/body-fondo-imagen-01.png') no-repeat center center fixed;
+            background-size: cover;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .install-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #d35400, #e67e22);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 12px 20px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 1000;
+            display: none;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        .header-bg { display: block; width: 100%; height: auto; background: #000; }
+
+        .header-text {
+            background: linear-gradient(135deg, rgba(10,10,10,0.85), rgba(26,26,26,0.85));
+            padding: 30px 20px;
+            border-bottom: 1px solid #333;
+        }
+
+        .flex-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .logo img { max-height: 120px; width: auto; border-radius: 10px; }
+        .info { text-align: left; }
+
+        @media (max-width: 600px) {
+            .logo img { max-height: 90px; }
+            .info { text-align: center; }
+            .flex-container { flex-direction: column; text-align: center; }
+            .name-row { flex-direction: column; gap: 0; }
+            .botones-container { flex-direction: column; }
+            .install-btn { bottom: 10px; right: 10px; padding: 8px 16px; font-size: 12px; }
+        }
+
+        .info h1 { color: #d35400; font-size: clamp(1.2rem,6vw,1.8rem); text-shadow: 2px 2px 4px rgba(0,0,0,0.8); }
+        .info p { color: #fff; }
+
+        .audio-discreet-wrapper { margin-top: 12px; display: flex; justify-content: center; }
+        .discreet-audio { width: 190px; height: 32px; background: rgba(0,0,0,0.5); border-radius: 60px; }
+
+        .container { flex: 1; display: flex; justify-content: center; align-items: center; padding: 20px 15px; }
+
+        .form-card {
+            background: rgba(30,30,35,0.88); border-radius: 20px; padding: 25px 20px;
+            max-width: 600px; width: 100%; box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            backdrop-filter: blur(4px); border: 1px solid rgba(255,215,0,0.3);
+        }
+
+        .form-card h2 { text-align: center; color: #ffd700; font-size: clamp(1.3rem,6vw,1.7rem); margin-bottom: 20px; }
+        .form-card h2 span { color: #ddd; font-size: 0.9rem; display: block; }
+
+        .name-row { display: flex; gap: 15px; flex-wrap: wrap; }
+        .name-row .form-group { flex: 1; min-width: 120px; }
+        .form-group { margin-bottom: 18px; }
+
+        label { display: block; font-weight: 600; color: #f0f0f0; margin-bottom: 6px; }
+        .required-asterisk { color: #ff9999; margin-left: 4px; }
+
+        input, select, textarea {
+            width: 100%; padding: 12px 15px; border: 2px solid #555; border-radius: 12px;
+            font-size: 16px; background: rgba(34,34,34,0.95); color: #fff;
+        }
+        input:focus, select:focus, textarea:focus { border-color: #ffd700; outline: none; }
+
+        .botones-container { display: flex; gap: 12px; margin-top: 10px; }
+
+        .btn {
+            flex: 1; border: none; padding: 14px 8px; font-size: clamp(1rem,5vw,1.2rem);
+            font-weight: bold; border-radius: 50px; cursor: pointer;
+            display: flex; align-items: center; justify-content: center; gap: 8px;
+        }
+        .btn-whatsapp { background: linear-gradient(135deg, #25d366, #128c7e); color: #fff; }
+        .btn-Nuevo { background: linear-gradient(135deg, #ff8c00, #e67e22); color: #fff; }
+
+        .footer { background: rgba(10,10,10,0.9); color: #ccc; text-align: center; padding: 15px 0; font-size: clamp(0.7rem,3.5vw,0.85rem); border-top: 1px solid #333; }
+        .footer p { padding: 0 20px; margin: 6px 0; }
+        .footer a { color: #ffd700; text-decoration: none; }
+        .footer .sep { color: #666; margin: 0 6px; }
+        .footer-images { display: flex; flex-direction: column; width: 100%; margin-top: 15px; }
+        .footer-img { width: 100%; height: auto; display: block; }
+
+        .status { margin-top: 20px; padding: 12px; border-radius: 10px; text-align: center; display: none; }
+        .status.success { background: #1e4620; color: #d4edda; }
+        .status.error { background: #5a1e1e; color: #f8d7da; }
+
+        .mensaje-preview { background: rgba(42,42,42,0.95); border-radius: 12px; padding: 12px; margin-top: 15px; font-family: monospace; font-size: 12px; color: #ddd; display: none; }
+    </style>
+</head>
+<body>
+    <button id="installBtn" class="install-btn"><i class="fas fa-download"></i> Instalar App</button>
+    
+    <img class="header-bg" src="printer-page-imagem/titulo-pagina-imagen-01.png" alt="Fondo Pyahu" loading="lazy" id="headerBg">
+    <div class="header-text">
+        <div class="flex-container">
+            <div class="logo">
+                <img src="printer-page-imagem/logo-imagen-01.png" alt="Logo Pyahu" loading="lazy" id="logoImg">
+            </div>
+            <div class="info">
+                <h1>PYAHU Solución Informática</h1>
+                <p>Ciudad del Este - Paraguay | Tu Solución en Tecnología</p>
+                <div class="audio-discreet-wrapper">
+                    <audio controls preload="metadata" class="discreet-audio">
+                        <source src="printer-page-imagem/audio-01.mp3" type="audio/mpeg">
+                    </audio>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="form-card">
+            <h2>📋 Atención Rápida por WhatsApp <span>Completa el formulario y envíanos tu solicitud</span></h2>
+            <form id="formPedido">
+                <div class="name-row">
+                    <div class="form-group">
+                        <label>👤 Nombre <span class="required-asterisk">*</span></label>
+                        <input type="text" id="nombre" required placeholder="Tu nombre">
+                    </div>
+                    <div class="form-group">
+                        <label>👤 Apellido <span class="required-asterisk">*</span></label>
+                        <input type="text" id="apellido" required placeholder="Tu apellido">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>🏢 Empresa (opcional)</label>
+                    <input type="text" id="empresa" placeholder="Nombre de la empresa">
+                </div>
+                
+                <div class="form-group">
+                    <label>❓ ¿Qué Necesitas? <span class="required-asterisk">*</span></label>
+                    <select id="queNecesito" required>
+                        <option value="">-- Elige una opción --</option>
+                        <option value="Reparacion">🔧 Reparación</option>
+                        <option value="Recarga Tintas">💧 Recarga de Tintas</option>
+                        <option value="Recarga Toner">⚫ Recarga de Toner</option>
+                        <option value="Compra">🛒 Comprar Insumos</option>
+                        <option value="Donacion">🎁 Donación</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>🖨️ Equipamiento <span class="required-asterisk">*</span></label>
+                    <select id="modelo" required>
+                        <option value="">-- Elige una opción --</option>
+                        <option value="IMPRESORA TINTA LIQUIDA">IMPRESORA TINTA LIQUIDA</option>
+                        <option value="IMPRESORA LASER POLVO">IMPRESORA LASER POLVO</option>
+                        <option value="NOTEBOOK">NOTEBOOK</option>
+                        <option value="COMPUTADORA">COMPUTADORA</option>
+                        <option value="Otro modelo">Otro modelo</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>📝 Especificación <span class="required-asterisk">*</span></label>
+                    <textarea id="especificacion" rows="2" placeholder="Ej: Epson L3110, Brother HL-1210W" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>💬 Observaciones <span class="required-asterisk">*</span></label>
+                    <textarea id="obs" rows="3" placeholder="Describa su consulta" required></textarea>
+                </div>
+
+                <div class="botones-container">
+                    <button type="button" class="btn btn-Nuevo" id="btnLimpiar"><i class="fas fa-eraser"></i> Nuevo</button>
+                    <button type="button" class="btn btn-whatsapp" id="btnWhatsApp"><i class="fab fa-whatsapp"></i> Enviar WhatsApp</button>
+                </div>
+
+                <div id="statusMsg" class="status"></div>
+                <div id="previewMsg" class="mensaje-preview"></div>
+            </form>
+        </div>
+    </div>
+    <div class="footer">
+        <p>© 1994 - Pyahu Solucion Informática - Todos los derechos reservados John Evan</p>
+        <p>
+            📞 <a href="https://wa.me/595982715041" target="_blank">(0982) 715041</a>
+            <span class="sep">|</span>
+            ✉️ <a href="mailto:pyahuinformatica@gmail.com">pyahuinformatica@gmail.com</a>
+            <span class="sep">|</span>
+            📍 Ciudad del Este, Paraguay
+        </p>
+        <div class="footer-images">
+            <img class="footer-img" src="printer-page-imagem/footer-imagen-01.png" alt="Footer 01" loading="lazy">
+            <img class="footer-img" src="printer-page-imagem/footer-imagen-02.png" alt="Footer 02" loading="lazy">
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            let deferredPrompt;
+            const installBtn = document.getElementById('installBtn');
+            
+            window.addEventListener('beforeinstallprompt', (e) => {
+                e.preventDefault();
+                deferredPrompt = e;
+                installBtn.style.display = 'flex';
+            });
+            
+            installBtn.addEventListener('click', async () => {
+                if (!deferredPrompt) return;
+                installBtn.style.display = 'none';
+                deferredPrompt.prompt();
+                deferredPrompt = null;
+            });
+            
+            if (window.matchMedia('(display-mode: standalone)').matches) {
+                installBtn.style.display = 'none';
+            }
+
+            if ('serviceWorker' in navigator && location.protocol === 'https:') {
+                navigator.serviceWorker.register('sw.js').catch(e => console.log('SW error:', e));
+            }
+
+            const BUSINESS_NUM = "595982715041";
+            
+            function showStatus(msg, type) {
+                const statusDiv = document.getElementById('statusMsg');
+                statusDiv.textContent = msg;
+                statusDiv.className = `status ${type}`;
+                statusDiv.style.display = 'block';
+                setTimeout(() => statusDiv.style.display = 'none', 5000);
+            }
+
+            document.getElementById('btnWhatsApp').addEventListener('click', () => {
+                const nombre = document.getElementById('nombre').value.trim();
+                const apellido = document.getElementById('apellido').value.trim();
+                const empresa = document.getElementById('empresa').value.trim();
+                const queNecesito = document.getElementById('queNecesito').value;
+                const modelo = document.getElementById('modelo').value;
+                const especificacion = document.getElementById('especificacion').value.trim();
+                const obs = document.getElementById('obs').value.trim();
+
+                if (!nombre || !apellido || !queNecesito || !modelo || !especificacion || !obs) {
+                    showStatus("Complete todos los campos obligatorios.", "error");
+                    return;
+                }
+
+                let necesidad = queNecesito === "Reparacion" ? "🔧 Reparación" :
+                               queNecesito === "Recarga Tintas" ? "💧 Recarga Tintas" :
+                               queNecesito === "Recarga Toner" ? "⚫ Recarga Toner" :
+                               queNecesito === "Compra" ? "🛒 Compra" : "🎁 Donación";
+
+                let msg = `📌 *PYAHU SOLUCIÓN INFORMÁTICA*\n`;
+                msg += `--------------------------------\n`;
+                msg += `*SOLICITUD DE SERVICIO*\n\n`;
+                msg += `👤 Nombre: ${nombre}\n`;
+                msg += `👤 Apellido: ${apellido}\n`;
+                if (empresa) msg += `🏢 Empresa: ${empresa}\n`;
+                msg += `❓ Necesidad: ${necesidad}\n`;
+                msg += `🖨️ Equipo: ${modelo}\n`;
+                msg += `📝 Especificación: ${especificacion}\n`;
+                msg += `💬 Observaciones: ${obs}\n`;
+                msg += `\n📱 Enviado desde la web Pyahu`;
+
+                const waLink = `https://wa.me/${BUSINESS_NUM}?text=${encodeURIComponent(msg)}`;
+                window.open(waLink, '_blank');
+            });
+
+            document.getElementById('btnLimpiar').addEventListener('click', () => {
+                document.getElementById('nombre').value = '';
+                document.getElementById('apellido').value = '';
+                document.getElementById('empresa').value = '';
+                document.getElementById('queNecesito').value = '';
+                document.getElementById('modelo').value = '';
+                document.getElementById('especificacion').value = '';
+                document.getElementById('obs').value = '';
+                showStatus('Formulario limpiado', 'success');
+            });
+        })();
+    </script>
+</body>
+</html>
