@@ -4,14 +4,14 @@ self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(CACHE_NAME).then(cache => {
       return cache.addAll([
-        '/',
-        '/index.html',
-        '/manifest.json',
-        '/printer-page-imagem/logo-imagen-01.png',
-        '/printer-page-imagem/body-fondo-imagen-01.png',
-        '/printer-page-imagem/titulo-pagina-imagen-01.png',
-        '/printer-page-imagem/footer-imagen-01.png',
-        '/printer-page-imagem/footer-imagen-02.png'
+        '/paraguay/',
+        '/paraguay/index.html',
+        '/paraguay/manifest.json',
+        '/paraguay/printer-page-imagem/logo-imagen-01.png',
+        '/paraguay/printer-page-imagem/body-fondo-imagen-01.png',
+        '/paraguay/printer-page-imagem/titulo-pagina-imagen-01.png',
+        '/paraguay/printer-page-imagem/footer-imagen-01.png',
+        '/paraguay/printer-page-imagem/footer-imagen-02.png'
       ]);
     })
   );
