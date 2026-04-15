@@ -428,6 +428,32 @@
             border: 1px solid #555;
             display: none;
         }
+
+        /* Estilo para el botón de instalación */
+        #btnInstalarPWA {
+            background: linear-gradient(135deg, #ff8c00, #e67e22);
+            color: white;
+            border: none;
+            padding: 14px 20px;
+            border-radius: 50px;
+            font-weight: bold;
+            width: 100%;
+            margin-top: 15px;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-size: 1rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        #btnInstalarPWA:hover {
+            transform: scale(1.02);
+            box-shadow: 0 5px 15px rgba(230, 126, 34, 0.4);
+        }
+        #btnInstalarPWA:active {
+            transform: scale(0.98);
+        }
     </style>
 </head>
 <body>
@@ -516,6 +542,11 @@
                         <i class="fab fa-whatsapp"></i> Enviar WhatsApp
                     </button>
                 </div>
+
+                <!-- BOTÓN INSTALAR PWA -->
+                <button id="btnInstalarPWA">
+                    <i class="fas fa-download"></i> 📱 Instalar Aplicación Pyahu
+                </button>
 
                 <div id="statusMsg" class="status"></div>
                 <div id="previewMsg" class="mensaje-preview"></div>
@@ -863,12 +894,4 @@
                 loadForm();
                 const audioEl = document.querySelector('.discreet-audio');
                 if (audioEl) {
-                    audioEl.addEventListener('error', () => {
-                        console.log("Audio no disponible, el sitio funciona con normalidad.");
-                    });
-                }
-            });
-        })();
-    </script>
-</body>
-</html>
+                    audioEl.addEventListener('error', () =>
