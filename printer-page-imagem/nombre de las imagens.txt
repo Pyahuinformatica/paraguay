@@ -1,0 +1,6 @@
+body-fondo-imagen-01
+footer-imagen-01
+footer-imagen-02
+logo-imagen-01
+titulo-pagina-imagen-01
+audio-01.mp3
