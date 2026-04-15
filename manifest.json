@@ -1,0 +1,27 @@
+{
+  "name": "Pyahu Solución Informática",
+  "short_name": "Pyahu",
+  "description": "Solicitud de servicio técnico por WhatsApp",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "theme_color": "#d35400",
+  "background_color": "#1e1e1e",
+  "orientation": "portrait",
+  "scope": "/",
+  "lang": "es-PY",
+  "categories": ["business", "productivity"],
+  "icons": [
+    {
+      "src": "printer-page-imagem/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "printer-page-imagem/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
