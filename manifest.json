@@ -11,7 +11,7 @@
   "icons": [
     {
       "src": "printer-page-imagem/logo-imagen-01.png",
-      "sizes": "144x144",
+      "sizes": "120x120",
       "type": "image/png",
       "purpose": "any maskable"
     }
@@ -25,7 +25,7 @@
       "icons": [
         {
           "src": "printer-page-imagem/logo-imagen-01.png",
-          "sizes": "120x120"
+          "sizes": "80x80"
         }
       ]
     },
