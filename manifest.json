@@ -1,0 +1,40 @@
+{
+  "name": "Pyahu Solución Informática",
+  "short_name": "Pyahu App",
+  "description": "Pedido rápido por WhatsApp para reparación de impresoras y venta de insumos",
+  "start_url": "/paraguay/",
+  "display": "standalone",
+  "theme_color": "#d35400",
+  "background_color": "#1a1a1a",
+  "orientation": "portrait",
+  "scope": "/",
+  "icons": [
+    {
+      "src": "printer-page-imagem/logo-imagen-01.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Novo Pedido",
+      "short_name": "Pedido",
+      "description": "Fazer um novo pedido",
+      "url": "/",
+      "icons": [
+        {
+          "src": "printer-page-imagem/logo-imagen-01.png",
+          "sizes": "80x80"
+        }
+      ]
+    },
+    {
+      "name": "Contato WhatsApp",
+      "short_name": "WhatsApp",
+      "description": "Falar diretamente no WhatsApp",
+      "url": "/"
+    }
+  ],
+  "categories": ["shopping", "business", "productivity"]
+}
