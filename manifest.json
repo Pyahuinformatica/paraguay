@@ -6,7 +6,7 @@
   "display": "standalone",
   "theme_color": "#d35400",
   "background_color": "#1a1a1a",
-  "orientation": "portrait",
+  "orientation": "any",
   "scope": "/paraguay/",
   "icons": [
     {
